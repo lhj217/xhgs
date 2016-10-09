@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_visit_log">
+
+    <select id="t_visit_log.findByVisitorsAddrIsNull" parameterType="Map" resultType="Map">
+		SELECT DISTINCT
+		    visit_ip
+		FROM
+		    t_visit_log
+		WHERE
+		    visitors_addr IS NULL limit 200
+	</select>
+	
+	<insert id="t_visit_log.insert" parameterType="Map">
+		INSERT INTO t_visit_log (visit_id,visit_ip,visit_time,visit_url) VALUES (#{visitId},#{visitIp},#{visitTime},#{visitUrl})
+	</insert>
+	
+	<update id="t_visit_log.updateVisitLog" parameterType="Map">
+		UPDATE t_visit_log SET visitors_addr = #{visitorsAddr} WHERE visit_ip = #{visitIp}
+	</update>
+
+</mapper>

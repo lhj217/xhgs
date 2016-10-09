@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE  mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="t_book_info">
+
+    <select id="t_book_info.findByShowHomePage" parameterType="Map" resultType="HashMap">
+		SELECT
+            book_id,
+            book_name,
+            book_auth,
+            book_type,
+            book_summary
+        FROM
+            t_book_info
+        WHERE
+            show_home_page = '1' limit 3
+	</select>
+
+    <select id="t_book_info.findByIsHot" parameterType="Map" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name
+        FROM
+            t_book_info
+        WHERE
+            is_hot = '1' limit 9
+    </select>
+
+    <select id="t_book_info.findByOrderByBookUpdateTime" parameterType="Map" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_type,
+            substring(book_update_time,1,10) as book_update_time
+        FROM
+            t_book_info
+        ORDER BY
+            book_update_time DESC limit 25
+    </select>
+
+    <select id="t_book_info.findByBookId" parameterType="String" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            book_type,
+            substring(book_create_time,1,10) AS book_create_time,
+            substring(book_update_time,1,10) AS book_update_time,
+            book_summary
+        FROM
+            t_book_info
+        WHERE
+            book_id = #{book_id}
+    </select>
+
+    <select id="t_book_info.findBooKInfoAndChapterByBookId" parameterType="String" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            book_type,
+            CASE
+                WHEN book_type = 0
+                THEN '其他'
+                WHEN book_type = 1
+                THEN '玄幻魔法'
+                WHEN book_type = 2
+                THEN '武侠修真'
+                WHEN book_type = 3
+                THEN '都市言情'
+                WHEN book_type = 4
+                THEN '历史军事'
+                WHEN book_type = 5
+                THEN '侦探推理'
+                WHEN book_type = 6
+                THEN '网游动漫'
+                WHEN book_type = 7
+                THEN '科幻小说'
+                WHEN book_type = 8
+                THEN '恐怖灵异'
+                WHEN book_type = 9
+                THEN '散文诗词'
+            END                              AS type_name,
+            substring(book_create_time,1,10) AS book_create_time,
+            substring(book_update_time,1,10) AS book_update_time,
+            book_summary,
+            (
+                SELECT
+                    MIN(chapter_id) AS chapter_id
+                FROM
+                    t_book_chapter
+                WHERE
+                    book_id = #{book_id}) AS chapter_id
+        FROM
+            t_book_info T1
+        WHERE
+            T1.book_id = #{book_id}
+    </select>
+
+    <select id="t_book_info.findByBookType" parameterType="Map" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            book_summary
+        FROM
+            t_book_info
+        WHERE
+            book_type = #{book_type}
+        ORDER BY
+            read_count DESC,
+            book_update_time DESC
+        limit #{start},20
+    </select>
+
+    <select id="t_book_info.findByBookBookIsOver" parameterType="Map" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            book_summary
+        FROM
+          t_book_info
+        WHERE
+          book_is_over = #{bookIsOver}
+        ORDER BY
+            read_count DESC,
+            book_update_time DESC
+        limit #{start},20
+    </select>
+    
+    <select id="t_book_info.countByBookType" parameterType="Map" resultType="int">
+        SELECT
+            count(*)
+        FROM
+          t_book_info
+        <where>
+			<if test="bookIsOver != null and bookIsOver != ''">
+				book_is_over = #{bookIsOver}
+			</if>
+			<if test="book_type != null and book_type != ''">
+				book_type = #{book_type}
+			</if>
+		</where>
+    </select>
+
+    <select id="t_book_info.findByBookNameLikeOrBookAuthLike" parameterType="Map" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            book_summary
+        FROM
+            t_book_info
+        WHERE
+            book_name LIKE '%${search}%'
+        OR  book_auth LIKE '%${search}%'
+        order by read_count ,book_update_time desc
+        limit #{start},20
+    </select>
+    
+    <select id="t_book_info.countByBookNameLikeOrBookAuthLike" parameterType="Map" resultType="int">
+        SELECT
+            count(*)
+        FROM
+            t_book_info
+        WHERE
+            book_name LIKE '%${search}%'
+        OR  book_auth LIKE '%${search}%'
+    </select>
+
+    <update id="t_book_info.updateByBookId" parameterType="String">
+        UPDATE
+            t_book_info
+        SET
+            read_day_count = read_day_count + 1 ,
+            read_week_count = read_week_count +1,
+            read_month_count = read_month_count +1 ,
+            read_count = read_count +1
+        WHERE
+            book_id = #{book_id}
+    </update>
+
+
+    <select id="t_book_info.findByOrderByReadDayCount" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            read_day_count as read_count
+        FROM
+            t_book_info
+        ORDER BY
+            read_day_count DESC limit 10
+    </select>
+
+    <select id="t_book_info.findByOrderByReadWeekCount" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            read_week_count as read_count
+        FROM
+          t_book_info
+        ORDER BY
+          read_week_count DESC limit 10
+    </select>
+
+    <select id="t_book_info.findByOrderByReadMonthCount" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            read_month_count as read_count
+        FROM
+          t_book_info
+        ORDER BY
+          read_month_count DESC limit 10
+    </select>
+
+    <select id="t_book_info.findByOrderByReadCount" resultType="HashMap">
+        SELECT
+            book_id,
+            book_name,
+            book_auth,
+            read_count as read_count
+        FROM
+          t_book_info
+        ORDER BY
+          read_count DESC limit 10
+    </select>
+
+    <update id="t_book_info.resetDayCount">
+        UPDATE t_book_info
+        SET read_day_count = 0
+    </update>
+
+    <update id="t_book_info.resetWeekCount">
+        UPDATE t_book_info
+        SET read_week_count = 0
+    </update>
+
+    <update id="t_book_info.resetMonthCount">
+        UPDATE t_book_info
+        SET read_month_count = 0
+    </update>
+
+</mapper>

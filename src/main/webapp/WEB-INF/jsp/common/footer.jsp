@@ -1,6 +1,5 @@
 ﻿<footer>
 	<p align="center">&copy; 2016 版权所有 哨兵小说网</p>
-	<p align="center">联系邮箱：playleud@gmail.com</p>
 </footer>
 <script src="http://m.xdhtxt.com/assets/js/sentinel.js"></script>
 <script>

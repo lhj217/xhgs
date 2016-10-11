@@ -16,7 +16,7 @@
 	</insert>
 	
 	<update id="t_visit_log.updateVisitLog" parameterType="Map">
-		UPDATE t_visit_log SET visitors_addr = #{visitorsAddr} WHERE visit_ip = #{visitIp}
+		UPDATE t_visit_log SET visitors_addr = #{visitorsAddr} WHERE visit_ip = #{visitIp} AND visitors_addr IS NULL
 	</update>
 
 </mapper>

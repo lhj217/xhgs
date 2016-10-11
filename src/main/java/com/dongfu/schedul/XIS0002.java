@@ -27,13 +27,13 @@ public class XIS0002 {
 	private SqlSessionTemplate sqlSession;
 
 	/**
-	 * 更新访客的地址(一小时更新一次)
+	 * 更新访客的地址(每十分钟更新一次)
 	 * 
 	 * @throws IOException
 	 * @throws JsonMappingException
 	 * @throws JsonParseException
 	 */
-	@Scheduled(cron = "0 0 * * * *")
+	@Scheduled(cron = "0 1/10 * * * *")
 	public void updateVisitInfo() throws JsonParseException, JsonMappingException, IOException {
 		logger.info("<------------- 更新访客的地址开始 ------------->");
 		List<Map<String, Object>> resultList = this.sqlSession.selectList("t_visit_log.findByVisitorsAddrIsNull");

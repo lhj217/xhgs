@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dongfu.util.Constant;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +35,7 @@ class DF010005Controller {
         Map bookInfo = sqlSession.selectOne("t_book_info.findBooKInfoAndChapterByBookId", bookId);
         List<Map<String, Object>> chapters = sqlSession.selectList("t_book_chapter.findByBookIdOrderByCreateTime", bookId);
         //系统参数
-        List<Map<String, Object>> sysParams = sqlSession.selectList("t_sys_param.findBy");
+        List<Map<String, Object>> sysParams = Constant.seoParams;
         //seo信息
         String title = "";
         String keywords = "";

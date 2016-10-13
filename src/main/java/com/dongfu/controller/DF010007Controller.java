@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.dongfu.util.Constant;
 import com.dongfu.util.ReadFile;
 
 /**
@@ -47,7 +48,7 @@ public class DF010007Controller {
 		String chapterContent = ReadFile
 				.readTxtFileByLine("/mnt/staticfiles/novel/" + bookId + "/" + chapterId + ".txt");
 		// 系统参数
-		List<Map<String, Object>> sysParams = sqlSession.selectList("t_sys_param.findBy");
+		List<Map<String, Object>> sysParams = Constant.seoParams;
 		// seo信息
 		String title = "";
 		String keywords = "";

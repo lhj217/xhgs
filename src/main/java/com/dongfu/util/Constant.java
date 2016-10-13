@@ -1,5 +1,8 @@
 package com.dongfu.util;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 系统常量
  * 
@@ -16,4 +19,7 @@ public class Constant {
 
 	// 查询IP地址的网站
 	public static String IP_WEBSITE_URL = "http://ip.taobao.com/service/getIpInfo.php?ip={ip}";
+
+	// SEO信息
+	public static List<Map<String, Object>> seoParams = null;
 }

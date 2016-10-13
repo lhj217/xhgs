@@ -1,5 +1,6 @@
 package com.dongfu.controller;
 
+import com.dongfu.util.Constant;
 import com.dongfu.util.Utils;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -53,7 +54,7 @@ public class DF010006Controller {
 		}
 
 		// 系统参数
-		List<Map<String, Object>> sysParams = sqlSession.selectList("t_sys_param.findBy");
+		List<Map<String, Object>> sysParams = Constant.seoParams;
 		// seo信息
 		String title = "";
 		String keywords = "";

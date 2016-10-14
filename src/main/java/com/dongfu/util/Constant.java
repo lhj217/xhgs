@@ -13,7 +13,7 @@ import java.util.Map;
  * @version V1.0
  */
 public class Constant {
-	// 哨兵小说网
+	// 域名地址
 	public static String WEBSITE_URL = "http://m.xdhtxt.com";
 	// public static String WEBSITE_URL = "http://localhost:8080";
 
@@ -22,4 +22,7 @@ public class Constant {
 
 	// SEO信息
 	public static List<Map<String, Object>> seoParams = null;
+	
+	//文件存放根目录
+	public static String BOOK_BASE_DIR = "/mnt/staticfiles/novel/";
 }

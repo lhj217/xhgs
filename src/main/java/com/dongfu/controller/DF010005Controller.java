@@ -32,7 +32,7 @@ class DF010005Controller {
     @RequestMapping(value = "/{bookId}.html", method = {RequestMethod.GET})
     public String BookInfo(@PathVariable("bookId") String bookId, Map<String, Object> result) {
         logger.info("bookId:" + bookId);
-        Map bookInfo = sqlSession.selectOne("t_book_info.findBooKInfoAndChapterByBookId", bookId);
+        Map<String, Object> bookInfo = sqlSession.selectOne("t_book_info.findBooKInfoAndChapterByBookId", bookId);
         List<Map<String, Object>> chapters = sqlSession.selectList("t_book_chapter.findByBookIdOrderByCreateTime", bookId);
         //系统参数
         List<Map<String, Object>> sysParams = Constant.seoParams;

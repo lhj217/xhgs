@@ -45,8 +45,7 @@ public class DF010007Controller {
 		params.put("bookId", bookId);
 		Map<String, Object> chapterInfo = sqlSession.selectOne("t_book_chapter.findByChapterId", params);
 		Map<String, Object> maxAndMinChapterId = sqlSession.selectOne("t_book_chapter.findMaxAndMinChapterId", params);
-		String chapterContent = ReadFile
-				.readTxtFileByLine("/mnt/staticfiles/novel/" + bookId + "/" + chapterId + ".txt");
+		String chapterContent = ReadFile.readTxtFileByLine(Constant.BOOK_BASE_DIR + bookId + "/" + chapterId + ".txt");
 		// 系统参数
 		List<Map<String, Object>> sysParams = Constant.seoParams;
 		// seo信息

@@ -19,7 +19,7 @@
                     </div>
                     <div>
                         <ul class="list-unstyled">
-                            <li>小说名称：<font>${bookInfo.book_name}</font></li>
+                            <li>小说名称：<strong>${bookInfo.book_name}</strong></li>
                             <li>小说作者：${bookInfo.book_auth}</li>
                             <li>小说类型：${bookInfo.type_name}</li>
                             <li>发布日期：${bookInfo.book_create_time}</li>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="list-group">
-			<a class="list-group-item active">最新章节</a>
+			<a class="list-group-item active">${bookInfo.book_name}最新章节</a>
             <c:forEach items="${chapters}" var="arr" varStatus="vs"><a href="${pageContext.request.contextPath}/${arr.book_id}/${arr.chapter_id}.html" class="list-group-item">${arr.chapter_title}</a></c:forEach>
         </div>
         <div>

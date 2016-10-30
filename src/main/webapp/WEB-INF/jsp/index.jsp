@@ -33,7 +33,7 @@
                         </div>
                         <div>
                             <ul class="list-unstyled">
-                            	<li>${arr.book_name}</li>
+                            	<li><strong>${arr.book_name}</strong></li>
                                 <li>${arr.book_auth}</li>
                                 <li style="font-size: 12px;text-indent: 2em;height: 70px;text-overflow: ellipsis; overflow: hidden;">
                                 	${arr.book_summary}

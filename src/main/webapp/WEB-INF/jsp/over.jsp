@@ -6,7 +6,7 @@
 <body>
 <div>
     <%@ include file="common/top.jsp"%>
-    <br>
+    <div class="blankline"></div>
     <div class="container">
         <div class="panel panel-primary" style="height: 2875px">
             <div class="panel-heading">

@@ -6,7 +6,7 @@
 <body>
 <div>
     <%@ include file="common/top.jsp" %>
-    <br>
+    <div class="blankline"></div>
     <div class="container" style="text-align:center">
         <div>
             <a href="${pageContext.request.contextPath}/category/1/0.html" class="btn btn-primary" role="button">玄幻魔法</a>

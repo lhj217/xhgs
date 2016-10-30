@@ -6,7 +6,7 @@
 <body>
 <div>
     <%@ include file="common/top.jsp"%>
-    <br>
+    <div class="blankline"></div>
     <div class="container">
         <div class="list-group">
             <a href="#" class="list-group-item active">当日排行</a>

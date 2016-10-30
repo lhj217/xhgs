@@ -36,7 +36,7 @@ public class CommonInterceptor implements HandlerInterceptor {
 		response.setHeader("Access-Control-Allow-Methods", "POST");// 允许的请求方法，一般是GET,POST,PUT,DELETE,OPTIONS
 		response.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type,accept");// 允许哪些请求头可以跨域
 		response.addHeader("Access-Control-Max-Age", "60");
-		logger.info("<---------------------------------------------------------------------------------------------->");
+		logger.info("<--------------------------------------------------------------->");
 		logger.info("request url-->" + request.getRequestURL());
 		String remoteIp = Utils.getRemoteHost(request);
 		logger.info("request  ip-->:" + remoteIp);
@@ -65,7 +65,6 @@ public class CommonInterceptor implements HandlerInterceptor {
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception e)
 			throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		logger.info("<---------------------------------------------------------------------------------------------->");
-		logger.info("\n");
+//		logger.info("<-------------------------------------------------------------------->");
 	}
 }

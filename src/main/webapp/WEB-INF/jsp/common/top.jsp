@@ -11,4 +11,4 @@
 		<li role="presentation" <c:if test="${active == 3}">class="active"</c:if> style="width: 25%"><a href="${pageContext.request.contextPath}/category/99/0.html">完本</a></li>
 	</ul>
 	</header>
-	<div class="carousel-inner" role="listbox"><div class="item active">${adv}</div></div>
+	<div class="carousel-inner" role="listbox"><div class="item active"></div></div>

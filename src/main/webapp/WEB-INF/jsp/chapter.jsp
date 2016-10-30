@@ -6,10 +6,10 @@
 <body>
 <div>
     <%@ include file="common/top.jsp" %>
-    <br>
+    <div class="blankline"></div>
     <div class="container">
         <div class="list-group">
-            <a href="#" class="list-group-item active">${bookInfo.book_name}-全部章节</a>
+            <a href="${pageContext.request.contextPath}/${bookInfo.book_id}.html" class="list-group-item active">${bookInfo.book_name}全部章节</a>
             <c:forEach items="${chapters}" var="arr" varStatus="vs"><a href="${pageContext.request.contextPath}/${arr.book_id}/${arr.chapter_id}.html" class="list-group-item">${arr.chapter_title}</a></c:forEach>
         </div>
         <nav>

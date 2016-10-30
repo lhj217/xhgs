@@ -6,7 +6,7 @@
 <body>
 <div>
     <%@ include file="common/top.jsp"%>
-    <br>
+    <div class="blankline"></div>
     <div class="container">
         <div class="panel panel-primary" style="height: 215px">
             <div class="panel-heading">
@@ -19,7 +19,7 @@
                     </div>
                     <div>
                         <ul class="list-unstyled">
-                            <li>小说名称：${bookInfo.book_name}</li>
+                            <li>小说名称：<font>${bookInfo.book_name}</font></li>
                             <li>小说作者：${bookInfo.book_auth}</li>
                             <li>小说类型：${bookInfo.type_name}</li>
                             <li>发布日期：${bookInfo.book_create_time}</li>
@@ -54,11 +54,12 @@
         </div>
     </div>
 </div>
-<div id="hm_t_112976"></div>
+<!-- baidu tuijian -->
+<div id="hm_t_113394"></div>
 <!--<div id="SOHUCS" class="container" sid="${bookInfo.book_id}"></div>
 <script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=cysBUxuxo&conf=prod_a498fbc479c3602fcf956ee976fde4a8"></script>
 --> 
-<br>
+<div class="blankline"></div>
 <%@ include file="common/footer.jsp" %>
 </body>
 </html>

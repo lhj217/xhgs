@@ -40,7 +40,9 @@ public class CommonInterceptor implements HandlerInterceptor {
 		logger.info("request url-->" + request.getRequestURL());
 		String remoteIp = Utils.getRemoteHost(request);
 		logger.info("request  ip-->:" + remoteIp);
-		if ("127.0.0.1".indexOf(remoteIp) < 0) {
+		if ("http://121.42.203.194:57810/404.html".equals(request.getRequestURL().toString())) {
+			logger.info("visit url is Invalid");
+		} else if ("127.0.0.1".indexOf(remoteIp) < 0) {
 			Map<String, Object> remoteMap = new HashMap<String, Object>(3);
 			remoteMap.put("visitId", System.currentTimeMillis());
 			remoteMap.put("visitIp", remoteIp);
@@ -65,6 +67,6 @@ public class CommonInterceptor implements HandlerInterceptor {
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object o, Exception e)
 			throws Exception {
 		request.setCharacterEncoding("UTF-8");
-//		logger.info("<-------------------------------------------------------------------->");
+		// logger.info("<-------------------------------------------------------------------->");
 	}
 }

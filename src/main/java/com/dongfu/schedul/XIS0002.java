@@ -33,6 +33,7 @@ public class XIS0002 {
 	 * @throws JsonMappingException
 	 * @throws JsonParseException
 	 */
+	@SuppressWarnings("unchecked")
 	@Scheduled(cron = "0 1/10 * * * *")
 	public void updateVisitInfo() throws JsonParseException, JsonMappingException, IOException {
 		logger.info("<------------- 更新访客的地址开始 ------------->");

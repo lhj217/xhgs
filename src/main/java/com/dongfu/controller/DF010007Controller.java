@@ -45,13 +45,18 @@ public class DF010007Controller {
 		params.put("bookId", bookId);
 		Map<String, Object> chapterInfo = sqlSession.selectOne("t_book_chapter.findByChapterId", params);
 		Map<String, Object> maxAndMinChapterId = sqlSession.selectOne("t_book_chapter.findMaxAndMinChapterId", params);
-		String chapterContent = ReadFile.readTxtFileByLine(Constant.BOOK_BASE_DIR + bookId + "/" + chapterId + ".txt");
+		Map<String, String> content = ReadFile.readTxtFileByLine(Constant.BOOK_BASE_DIR + bookId + "/" + chapterId + ".txt");
 		// 系统参数
 		List<Map<String, Object>> sysParams = Constant.seoParams;
 		// seo信息
 		String title = "";
 		String keywords = "";
 		String description = "";
+		String chapterContent = "小编正在处理中,请稍后...";
+		if (null != content) {
+			description = content.get("description").trim().substring(0, 140);
+			chapterContent = content.get("newContent");
+		}
 
 		for (int i = 0; i < sysParams.size(); i++) {
 			Map<String, Object> sysParam = sysParams.get(i);
@@ -63,10 +68,12 @@ public class DF010007Controller {
 				keywords = (sysParam.get("param_value") + "").replace("bookName", bookInfo.get("book_name") + "")
 						.replace("chapterName", chapterInfo.get("chapter_title") + "");
 			}
-			if ("content_description".equals(sysParam.get("param_key") + "")) {
-				description = (sysParam.get("param_value") + "").replace("bookName", bookInfo.get("book_name") + "")
-						.replace("bookAuth", bookInfo.get("book_auth") + "");
-			}
+			// if ("content_description".equals(sysParam.get("param_key") + ""))
+			// {
+			// description = (sysParam.get("param_value") +
+			// "").replace("bookName", bookInfo.get("book_name") + "")
+			// .replace("bookAuth", bookInfo.get("book_auth") + "");
+			// }
 		}
 
 		Map<String, Object> seo = new HashMap<>();

@@ -56,10 +56,8 @@
 </div>
 <!-- baidu tuijian -->
 <div id="hm_t_113394"></div>
-<!--<div id="SOHUCS" class="container" sid="${bookInfo.book_id}"></div>
+<div id="SOHUCS" class="container" sid="${bookInfo.book_id}"></div>
 <script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=cysBUxuxo&conf=prod_a498fbc479c3602fcf956ee976fde4a8"></script>
---> 
-<div class="blankline"></div>
 <%@ include file="common/footer.jsp" %>
 </body>
 </html>

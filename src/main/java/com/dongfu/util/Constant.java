@@ -22,7 +22,10 @@ public class Constant {
 
 	// SEO信息
 	public static List<Map<String, Object>> seoParams = null;
-	
-	//文件存放根目录
+
+	// 文件存放根目录
 	public static String BOOK_BASE_DIR = "/mnt/staticfiles/novel/";
+
+	// 编码格式
+	public static String ENCODING = "UTF-8";
 }

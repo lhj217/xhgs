@@ -21,7 +21,7 @@
     </div>
     <div class="blankline"></div>
     <div class="container">
-        <div class="panel panel-primary" style="height: ${height}px">
+        <div class="panel panel-primary" style="height: ${height}px; margin-bottom: 5px">
             <div class="panel-heading">
                 <h3 class="panel-title">搜索结果</h3>
             </div>
@@ -42,11 +42,38 @@
 		                </div>
 		             </div>
 		         </a>
-		         <hr style="margin-top: 0px;margin-bottom: 10px;"></c:forEach></c:when><c:otherwise><div style="text-align:center">没有搜到找到相关内容！</div></c:otherwise></c:choose>
-            </div>
-        </div>
+		         <hr style="margin-top: 0px;margin-bottom: 10px;">
+		         </c:forEach></c:when><c:otherwise>
+		         <div style="text-align:center">没有搜到找到相关内容！</div>
+			</div>
+		</div>
+		<div class="panel panel-primary" style="height: 450px">
+			<div class="panel-heading">
+				<h3 class="panel-title">猜你喜欢</h3>
+			</div>
+			<div class="panel-body">
+				<c:forEach items="${homeBooks}" var="arr" varStatus="vs"><div style="height: 130px;" style=" float: left;">
+					<a href="${pageContext.request.contextPath}/${arr.book_id}.html">
+				        <div style="float: left; width: 100px">
+				        	<img src="${website}/novelcover/${arr.book_id}.jpg" alt="${arr.book_name}" width="90" height="120">
+				        </div>
+				        <div>
+				        	<ul class="list-unstyled">
+				            	<li><strong>${arr.book_name}</strong></li>
+				            	<li>${arr.book_auth}</li>
+				            	<li style="font-size: 12px;text-indent: 2em;height: 70px;text-overflow: ellipsis; overflow: hidden;">${arr.book_summary}</li>
+					        </ul>
+				        </div>
+					</a>
+			      </div>
+			    </c:forEach>
+			  </div>
+			  </div>
+		</c:otherwise></c:choose>
     </div>
-	<c:if test="${bookSize > 20}">
+	
+</div>
+<c:if test="${bookSize > 20}">
 	    <nav>
 	        <ul class="pager">
 	            <li><a href="${pageContext.request.contextPath}/search/pageNum/${previousPageNum}/detail.html?searchContent=${searchText}">上一页</a></li>
@@ -54,7 +81,6 @@
 	        </ul>
 	    </nav>
     </c:if>
-</div>
 <%@ include file="common/footer.jsp" %>
 </body>
 </html>

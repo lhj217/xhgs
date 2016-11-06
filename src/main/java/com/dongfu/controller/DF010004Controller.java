@@ -37,6 +37,8 @@ public class DF010004Controller {
 		}
 		String search = request.getParameter("searchContent");
 		logger.info("search:" + search);
+		// 首页小说
+		List<Map<String, Object>> homeBooks = sqlSession.selectList("t_book_info.findByShowHomePage");
 		List<Map<String, Object>> bookList = new ArrayList<>();
 		int count = 0;
 		// （临时）过滤掉sql注入攻击
@@ -62,6 +64,7 @@ public class DF010004Controller {
 		result.put("bookList", bookList);
 		result.put("searchText", search);
 		result.put("bookSize", count);
+		result.put("homeBooks", homeBooks);
 		return "search";
 	}
 

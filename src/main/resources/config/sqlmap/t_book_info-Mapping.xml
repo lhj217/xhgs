@@ -154,7 +154,7 @@
         WHERE
             book_name LIKE '%${search}%'
         OR  book_auth LIKE '%${search}%'
-        order by read_count ,book_update_time desc
+        order by read_count DESC,book_update_time DESC
         limit #{start},20
     </select>
     

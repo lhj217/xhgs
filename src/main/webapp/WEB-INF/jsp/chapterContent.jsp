@@ -6,7 +6,7 @@
 <body>
 <div>
     <%@ include file="common/top.jsp"%>    
-    <div class="container">
+    <div class="container bgimg">
         <div class="row">
             <div class="col-lg-12">
                 <h3 style="font-size: 22px" align='center'><a href="${pageContext.request.contextPath}/chapter/${chapterInfo.book_id}/0.html">${bookName}</a></h3>

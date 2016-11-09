@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dongfu.util.Constant;
+
 /**
  * APP首页交易
  * 
@@ -33,6 +35,10 @@ public class NRS0001Controller {
 		Map<String, Object> result = new HashMap<String, Object>(5);
 		// 首页小说
 		List<Map<String, Object>> homeBooks = sqlSession.selectList("t_book_info.findByShowHomePage");
+		for (Map<String, Object> map : homeBooks) {
+			map.put("book_cover_url", Constant.WEBSITE_URL + Constant.PIC_URL_PREFIX + map.get("book_id") + "."
+					+ (Constant.PIC_TYPE.JPG + "").toLowerCase());
+		}
 		result.put("books", homeBooks);
 		return result;
 	}

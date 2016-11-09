@@ -17,6 +17,14 @@ public class Constant {
 	public static String WEBSITE_URL = "http://m.xdhtxt.com";
 	// public static String WEBSITE_URL = "http://localhost:8080";
 
+	// 封面url前缀
+	public static String PIC_URL_PREFIX = "/novelcover/";
+
+	// 图片类型
+	public static enum PIC_TYPE {
+		JPG, PNG
+	}
+
 	// 查询IP地址的网站
 	public static String IP_WEBSITE_URL = "http://ip.taobao.com/service/getIpInfo.php?ip={ip}";
 

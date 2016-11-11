@@ -1,4 +1,5 @@
-﻿<header>
+﻿<div class="container">
+<header>
 	<div class="login_top">
 		<div class="logon-logo" onclick="location.href='${pageContext.request.contextPath}/';">
 			<img src="http://m.xdhtxt.com/assets/imgs/logo.png" class="login-img" alt="免费小说在线阅读" title="免费小说在线阅读"><span>哨兵小说网</span>
@@ -12,3 +13,4 @@
 	</ul>
 	</header>
 	<div class="carousel-inner" role="listbox"><div class="item active"></div></div>
+</div>
